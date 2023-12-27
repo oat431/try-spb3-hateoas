@@ -1,5 +1,7 @@
 package panomete.playground.spb3hateoas.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.CollectionModel;
@@ -26,6 +28,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class CustomerController {
     private final CustomerService customerService;
 
+    @ApiResponse(responseCode = "200", description = "Customer details")
+    @Operation(summary = "Get customer details")
     @GetMapping("/v1/{id}")
     public ResponseEntity<CustomResponseBody<Customer>> getCustomerDetails(
             @PathVariable(name = "id") String id
@@ -36,6 +40,8 @@ public class CustomerController {
         return ResponseEntity.ok(responseBody);
     }
 
+    @ApiResponse(responseCode = "200", description = "Customer v2 details")
+    @Operation(summary = "Get customer v2 details")
     @GetMapping("/v2/{id}")
     public ResponseEntity<CustomResponseBody<CustomerV2>> getCustomerDetailsV2(
             @PathVariable(name = "id") String id
@@ -49,6 +55,8 @@ public class CustomerController {
         return ResponseEntity.ok(responseBody);
     }
 
+    @ApiResponse(responseCode = "200", description = "Customer v2 list")
+    @Operation(summary = "Get all customer v2 details")
     @GetMapping("/v2")
     public ResponseEntity<CustomResponseBody<CollectionModel<CustomerV2>>> getAllCustomerV2Details() {
         List<CustomerV2> customerV2List = customerService.getAllCustomerV2Details();
@@ -68,6 +76,8 @@ public class CustomerController {
         return ResponseEntity.ok(responseBody);
     }
 
+    @ApiResponse(responseCode = "200", description = "Customer orders")
+    @Operation(summary = "Get customer orders")
     @GetMapping("/v2/{id}/orders")
     public ResponseEntity<CustomResponseBody<List<String>>> getCustomerOrders(
             @PathVariable(name = "id") String id
@@ -78,6 +88,8 @@ public class CustomerController {
         return ResponseEntity.ok(responseBody);
     }
 
+    @ApiResponse(responseCode = "200", description = "pong")
+    @Operation(summary = "Ping")
     @GetMapping("/v2/ping")
     public ResponseEntity<CustomResponseBody<String>> ping() {
         CustomResponseBody<String> responseBody = new CustomResponseBody<>(
