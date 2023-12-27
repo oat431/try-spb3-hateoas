@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    active: development
+  application:
+    name: try-spring-boot-hateoas
+    threads:
+      virtual:
+        enabled: true
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    operations-sorter: method
+    path: /swagger-ui.html
+    syntax-highlight:
+      theme: monokai
+      activated: true
+    try-it-out-enabled: true
+    tags-sorter: alpha
+    filter: true
+
+server:
+  port: 9080
