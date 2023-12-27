@@ -1,4 +1,8 @@
-# Getting Started
+# Try Spring HATEOAS
+The Spring HATEOAS project is a library of APIs that we can use to easily create REST representations 
+that follow the principle of HATEOAS (Hypertext as the Engine of Application State).
+
+it makes the integration testing easier by following the links in the response body.
 
 ### Reference Documentation
 For further reference, please consider the following sections:
